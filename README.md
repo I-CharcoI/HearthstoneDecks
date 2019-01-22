@@ -15,7 +15,7 @@ Entidades principales: Mazos, Cartas, Noticias, Anuncios, Reglamento
 
 5. **Reglamento**: Muestra las reglas del juego explicadas de forma sencilla para aprender a jugar. Es visualizable por cualquiera y actualizable solo por Administradores.
 
-6. **Usuario**: Regitro, crear mazos, crear anuncios, enviar y recibir mensajes privados.
+6. **Usuario**: Registro, crear mazos, crear anuncios, enviar y recibir mensajes privados.
 
 
 ## *Parte Pública*
