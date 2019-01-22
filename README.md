@@ -35,10 +35,10 @@ Actualización de la página.
 
 ## *Sistema Interno*
 
-Envío de avisos de sistema, control de los filtros de búsqueda
+Envío de avisos de sistema, control de los filtros de búsqueda de la base de datos, notificación de novedades
 
 
-Integrantes: 
+## Integrantes: 
              
              Aitor Matilla Casanova; a.matilla@alumnos.urjc.es; @a-matillac.
 
