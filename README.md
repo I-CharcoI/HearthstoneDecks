@@ -15,6 +15,9 @@ Entidades principales: Mazos, Cartas, Noticias, Anuncios, Reglamento
 
 5. **Reglamento**: Muestra las reglas del juego explicadas de forma sencilla para aprender a jugar. Es visualizable por cualquiera y actualizable solo por Administradores.
 
+
+##*Parte Privada*
+
 Integrantes: 
              
              Aitor Matilla Casanova; a.matilla@alumnos.urjc.es; @a-matillac.
