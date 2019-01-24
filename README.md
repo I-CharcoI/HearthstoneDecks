@@ -35,7 +35,7 @@ Actualización de la página.
 
 ## *Sistema Interno*
 
-Envío de avisos de sistema, control de los filtros de búsqueda de la base de datos, notificación de novedades
+Envío de avisos de sistema, notificación de novedades
 
 
 ## Integrantes: 
