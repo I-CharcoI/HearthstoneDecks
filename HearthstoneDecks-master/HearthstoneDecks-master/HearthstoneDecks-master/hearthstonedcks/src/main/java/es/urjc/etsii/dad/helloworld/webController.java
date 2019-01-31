@@ -10,8 +10,4 @@ public class webController {
 	public String indexPrueba() {
 		return "index.html";
 	}
-	@GetMapping("/register")
-	public String registerPrueba() {
-		return "registrarse.html";
-	}
 }
