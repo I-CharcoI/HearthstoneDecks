@@ -63,3 +63,10 @@ input{
 	text-align: center;
 	font-size: 14px;
 }
+
+.form_olvidado {
+	width: 100%;
+	margin: 7px;
+	text-align: center;
+	font-size: 14px;
+}

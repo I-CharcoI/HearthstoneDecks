@@ -14,4 +14,8 @@ public class webController {
 	public String registerPrueba() {
 		return "registrarse.html";
 	}
+	@GetMapping("/login")
+	public String loginPrueba(){
+		return "login.html";
+	}
 }
