@@ -31,15 +31,15 @@ nav{
 .menu>.menu-content{
 	padding: 0.5px 20px;
 	width: 700px;
-	height: 65px;
-	float: right;
+	height: 100px;
+	
 	font-family: sans-serif,Arial;
 	font-size:16px;
 	font-weight: bold;
 	letter-spacing: -0.05em;
 	position: relative;
 	color: #fff;
-	line-height: 40px;
+	line-height: 20px;
 }
 .menu>.menu-content>a{
 	float: right;
@@ -54,16 +54,10 @@ nav{
 }
 .menu2>.menu2-content{
 	
-	width: 1000px;
-	height: 65px;
-	float: none;
 	font-family: sans-serif,Arial;
 	font-weight: bold;
-	letter-spacing: -0.0001em;
-	position: relative;
 	color: #c0c4c8;
-	line-height: 20px;
-	text-align: right;
+	line-height: 100px;
 }
 .menu2>.menu2-content>a{
 	color:#e0cd06;
