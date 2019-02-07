@@ -65,6 +65,7 @@
 }
 .tituloNOT>p{
 	 margin: -6em 21em 2em;
+	 width: 55%;
 }
 img{
 	margin: 1em 0em -1em;
