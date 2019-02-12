@@ -1,0 +1,50 @@
+body{
+		margin: 0;
+		padding: 0;
+		position: relative;
+		background: #ffff;
+		position: relative;
+}
+header {
+	width: 100%;
+	background: #465c93;
+}
+
+#btn_menu {
+	display: none;
+	
+}
+
+header label {
+	display: none;
+	width: 15px;
+	height: 15px;
+	border-right: 1px solid #e0cd06;
+}
+
+header label: hover {
+	cursor: pointer;
+	background: rgba(0,0,0,0.3);
+}
+
+.menu ul {
+	margin: 0;
+	list-style: none;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+}
+
+.menu li {
+	text-align: center;
+	flex-grow: 1;
+}
+.menu li: hover {
+	background: rgba(0,0,0,0.3);
+}
+.menu li a {
+	display: block;
+	padding: 15px 20px;
+	color: #e0cd06;
+	text-decoration: none;
+}
