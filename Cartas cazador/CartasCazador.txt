@@ -1,0 +1,16 @@
+
+//cartas_repository.save(new Cartas(Nombre,Clase,Expansion,Coste,Efecto,Rareza,TipoCarta,ataque,Vida,URLimagen));
+//cartas_repository.save(new Cartas("","","",,"","","",,,""));
+
+
+cartas_repository.save(new Cartas("Compañero Animal","Cazador","Basico",3,"Invoca a una bestia compañera aleatoria","Basica","Hechizo",0,0,"/ImagenesCartas/cazador/companieroAnimal.jpg"));
+cartas_repository.save(new Cartas("Disparo arcano","Cazador","Basico",1,"Inflinge 2 de daño","Basica","Hechizo",0,0,"/ImagenesCartas/cazador/disparoArcano.jpg"));
+cartas_repository.save(new Cartas("Matar","Cazador","Basico",3,"Inflige 3 de daño. Si tienes una bestia en juego, inflige 5 de daño","Basica","Hechizo",0,0,"/ImagenesCartas/cazador/matar.jpg"));
+cartas_repository.save(new Cartas("Rastrear","Cazador","Basico",1,"Mira las tres cartas superiores de tu mazo. Roba una y descarta las demás","Basica","Hechizo",0,0,"/ImagenesCartas/cazador/rastrear.jpg"));
+cartas_repository.save(new Cartas("Rinoceronte de la tundra","Cazador","Basico",5,"Tus bestias tienen cargar","Basica","Esbirro",2,5,"/ImagenesCartas/cazador/rinoceronteDeLaTundra.jpg"));
+cartas_repository.save(new Cartas("Disparo Mortal","Cazador","Clasico",3,"Destruye a un esbirro enemigo aleatorio","Comun","Hechizo",0,0,"/ImagenesCartas/cazador/disparoMortal.jpg"));
+cartas_repository.save(new Cartas("Hiena Carroñera","Cazador","Clasico",2,"Obtiene +2/+1 cada vez que muere una bestia amistosa","Comun","Esbirro",2,2,"/ImagenesCartas/cazador/hienaCarroniera.jpg"));
+cartas_repository.save(new Cartas("Arco de cuerno de aguila","Cazador","Clasico",3,"Obtiene +1 de durabilidad cada vez que se revela un secreto","Poco comun","Arma",3,2,"/ImagenesCartas/cazador/arcoDeCuernoDeAguila.jpg"));
+cartas_repository.save(new Cartas("Crinalta de la sabana","Cazador","Clasico",6,"Último aliento: Invoca dos hienas 2/2","Poco común","Esbirro",6,5,"/ImagenesCartas/cazador/crinaltaDeLaSabana.jpg"));
+cartas_repository.save(new Cartas("Trampa con culebras","Cazador","Clasico",2,"Secreto: Cuando atacan a uno de tus esbirros, invoca tres culebras 1/1","Épica","Hechizo",0,0,"/ImagenesCartas/cazador/trampaConCulebras"));
+cartas_repository.save(new Cartas("Rey Krush","Cazador","Clasico",9,"Cargar","Legendaria","Esbirro",8,8,"/ImagenesCartas/cazador/reyKrush.jpg"));
