@@ -2,6 +2,7 @@ package es.urjc.etsii.dad.helloworld;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface MazosRepository extends JpaRepository<AnunNoti,Long>{
-
+public interface AnunNotiRepository extends JpaRepository<AnunNoti,Long>{
+	
+	
 }

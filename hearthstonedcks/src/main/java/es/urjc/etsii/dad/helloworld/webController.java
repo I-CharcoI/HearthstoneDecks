@@ -12,22 +12,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class webController {
-/*	
+
 	@Autowired
-	private AnunciosRepository repositoryA;
-	private NoticiasRepository repositoryN;
+	private AnunNotiRepository repository;
+	
 	
 	
 	@PostConstruct
 	public void initN() {
-		repositoryN.save(new Noticias("Noticia1", "este es el primera noticia que hago jajajaja", "Autor: Pepe"));
-		repositoryN.save(new Noticias("Noticia2", "esta es la segunda noticia bla bla bla blablabla blabla blabla bla blabla blabla blabla blabla", "Autor: Antonio"));
+		repository.save(new AnunNoti("Noticia1", "este es el primera noticia que hago jajajaja", "Autor: Pepe", "noticia"));
+		repository.save(new AnunNoti("Noticia2", "esta es la segunda noticia bla bla bla blablabla blabla blabla bla blabla blabla blabla blabla", "Autor: Antonio","noticia"));
 	}
 	
 	@RequestMapping("/notici")
 	public String noticia(Model model) {
 
-		model.addAttribute("noti", repositoryN.findAll());
+		model.addAttribute("noti", repository.findAll());
 
 		return "noticias";
 	}
@@ -35,27 +35,27 @@ public class webController {
 	@RequestMapping("/indexx")
 	public String notanunindex(Model model) {
 
-		model.addAttribute("noindex", repositoryN.findAll());
-		model.addAttribute("anunindex", repositoryA.findAll());
+		model.addAttribute("noindex", repository.findAll());
+		model.addAttribute("anunindex", repository.findAll());
 
 		return "index";
 	}
 	
 	@PostConstruct
 	public void initA() {
-		repositoryA.save(new Anuncios("Anuncio1", "este es el primer anuncio que hago jajajaja", "Autor: Pepe"));
-		repositoryA.save(new Anuncios("Anuncio2", "este es el segundo anuncio blablabla blabla blabla blabla bla blabla blabla blabla ", "Autor:Antonio"));
+		repository.save(new AnunNoti("Anuncio1", "este es el primer anuncio que hago jajajaja", "Autor: Pepe", "anuncio"));
+		repository.save(new AnunNoti("Anuncio2", "este es el segundo anuncio blablabla blabla blabla blabla bla blabla blabla blabla ", "Autor:Antonio", "anuncio"));
 	}
 
 	@RequestMapping("/anunci")
 	public String anuncio(Model model) {
 
-		model.addAttribute("anuncio", repositoryA.findAll());
+		model.addAttribute("anuncio", repository.findAll(anuncio);
 
 		return "anuncios";
 	}
 	
-*/	
+
 	
 	@GetMapping("/")
 	public String indexPrueba() {
@@ -70,13 +70,14 @@ public class webController {
 		return "login.html";
 	}
 	
-	//@PostMapping("/index")
-	//public String indexPrueba2(Model model,@RequestParam String nombre,@RequestParam String contrasenia) {
-		//model.addAttribute("nombre", nombre);
-		//model.addAttribute("contrasenia", contrasenia);
-		//return "index";
+/*	@PostMapping("/index")
+	public String indexPrueba2(Model model,@RequestParam String nombre,@RequestParam String contrasenia) {
+		model.addAttribute("nombre", nombre);
+		model.addAttribute("contrasenia", contrasenia);
+		return "index";
 		
-	//}
+	}
+*/
 	
 	@GetMapping("/noticias")
 	public String notParticular(Model model) {
@@ -90,3 +91,8 @@ public class webController {
 		return "anuncios";
 	}
 }
+/*	public String showItem(Model ..., long id) {
+Item i = repo.findById(id).ortlseThrow(
+		()-> new EntityNotFound("id no encontrado" +id));
+}
+*/
