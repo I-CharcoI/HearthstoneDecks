@@ -11,95 +11,106 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class User {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long idUser;
 	
 	private String nombre;
 	private String apellido1;
 	private String apellido2;
 	
-	@Column(unique=true,nullable=false)
+	@Column(unique= true)
 	private String nick;
-	
-	private String pais;
-	
-	@Lob
 	private String correo;
-	
-	@Lob
 	private String contrasenia;
-	
 	private String fechanac;
-	@Id
-	@GeneratedValue (strategy = GenerationType.AUTO)
-	private long id_user;
-	
-	// un usuario tiene N anuncios, un anuncio solo tiene un usuario
-	@OneToMany
-	private List<Anuncios> anuncios;
+	private String pais;
 	
 	public User() {
 		
 	}
-	public User(String nombre,String apellido1,String apellido2,String nick,String pais,String correo,String contrasenia,String fechanac) {
+	
+	public User(String nombre,String apellido1,String apellido2,String nick,String correo,String contrasenia,String fechanac,String pais) {
+		
 		this.nombre = nombre;
-		this.apellido1= apellido1;
-		this.apellido2= apellido2;
+		this.apellido1 = apellido1;
+		this.apellido2 = apellido2;
 		this.nick = nick;
-		this.pais = pais;
 		this.correo = correo;
 		this.contrasenia = contrasenia;
 		this.fechanac = fechanac;
+		this.pais = pais;
+	}
+	
+	public long getId() {
+		return idUser;
+	}
+	
+	public void setId(long id) {
+		idUser = id;
 	}
 	
 	public String getNombre() {
 		return nombre;
 	}
+	
+	public void setNombre(String nomb) {
+		this.nombre = nomb;
+	}
+	
 	public String getApellido1() {
 		return apellido1;
+	}
+	
+	public void setApellido1(String ap) {
+		apellido1 = ap;
 	}
 	public String getApellido2() {
 		return apellido2;
 	}
+	
+	public void setApellido2(String ap) {
+		apellido2 = ap;
+	}
+	
 	public String getNick() {
 		return nick;
 	}
-	public String getPais() {
-		return pais;
+	
+	public void setNick(String ni) {
+		nick = ni;
 	}
+	
 	public String getCorreo() {
 		return correo;
 	}
+	
+	public void setCorreo(String corr) {
+		this.correo = corr;
+	}
+	
 	public String getContrasenia() {
 		return contrasenia;
 	}
+	
+	public void setContrasenia(String con) {
+		this.contrasenia = con;
+	}
+	
 	public String getFechanac() {
 		return fechanac;
 	}
-	public long getId() {
-		return id_user;
+	
+	public void setFechanac(String fech) {
+		this.fechanac = fech;
 	}
 	
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public String getPais() {
+		return pais;
 	}
-	public void setApellido1(String apellido1) {
-		this.apellido1 = apellido1;
-	}
-	public void setApellido2(String apellido2) {
-		this.apellido2 = apellido2;
-	}
-	public void setNick(String nick) {
-		this.nick = nick;
-	}
+	
 	public void setPais(String pais) {
 		this.pais = pais;
-	}
-	public void setCorreo(String correo) {
-		this.correo = correo;
-	}
-	public void setContrasenia(String contrasenia) {
-		this.contrasenia = contrasenia;
-	}
-	public void setFechanac(String fechanac) {
-		this.fechanac = fechanac;
 	}
 }
