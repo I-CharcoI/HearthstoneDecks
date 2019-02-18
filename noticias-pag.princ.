@@ -1,0 +1,75 @@
+<div class="container">
+					<section class="primary-content" role="main">
+									<ul class="listing listing-post post-listing">
+										<li>
+													<div>
+														<p> 
+														<img src="C:\Users\Any\Documents\3º\distribuidos/imagenes/prueba.jpg">
+														<div class="tituloNOT">
+															<h2>Noticia1 de prueba</h2>
+															<p>Este es el cuerpo de la noticia.......bfhdabfhbhad hfbidebfbd ididfhid idgfdh hdh hdvh.</p>
+														</div>
+														</p>
+													</div>
+														<span>
+														By "autor"
+														</span>
+										</li>
+									</ul>
+					</section>
+				
+			</div>
+			<div class="container2">
+					<section class="primary-content2" role="main2">
+									<ul class="listing listing-post post-listing2">
+										<li>
+													<div>
+														<p> 
+														<img src="C:\Users\Any\Documents\3º\distribuidos/imagenes/prueba.jpg">
+														<div class="tituloNOT">
+															<h2>Noticia1 de prueba</h2>
+															<p>Este es el cuerpo de la noticia.......bfhdabfhbhad hfbidebfbd ididfhid idgfdh hdh hdvh.</p>
+														</div>
+														</p>
+													</div>
+														<span>
+														By "autor"
+														</span>
+										</li>
+									</ul>
+					</section>
+				
+			</div>
+      
+      css:
+      .container{
+	height: 200px;
+	width: 70%;
+	background: #2d2b86;
+}
+
+.container2{
+	height: 200px;
+	width: 70%;
+	background: #2d2b86;
+}
+	
+.tituloNOT>h2{
+	font-family: "Open Sans Condensed",serif;
+    font-size: 17px;
+    font-weight: 950px;
+    line-height: 50.0px;
+    margin: -10em 20em 6em;
+    letter-spacing: 0;
+    
+}
+.tituloNOT>p{
+	 margin: -6em 21em 2em;
+	 width: 55%;
+}
+img{
+	margin: 1em 0em -1em;
+}
+span{
+	margin: -10em 21em 6em;
+}
