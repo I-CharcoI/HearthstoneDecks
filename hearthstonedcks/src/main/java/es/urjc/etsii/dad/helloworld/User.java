@@ -113,4 +113,8 @@ public class User {
 	public void setPais(String pais) {
 		this.pais = pais;
 	}
+	
+	public String toString() {
+		return "Usuario [id: "+idUser+" ,nombre: "+nombre+" ,primer apellido: "+apellido1+" , segundo apellido: "+apellido2+" ,nick: "+nick+" ,correo: "+correo+" ,contraseña: "+contrasenia+" ,fecha de nacimiento: "+fechanac+" ,pais: "+pais+" ]";
+	}
 }
