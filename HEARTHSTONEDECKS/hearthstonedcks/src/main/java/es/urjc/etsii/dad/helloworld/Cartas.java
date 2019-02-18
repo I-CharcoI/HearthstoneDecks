@@ -1,7 +1,10 @@
 package es.urjc.etsii.dad.helloworld;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Cartas {
@@ -19,6 +22,9 @@ public class Cartas {
 	private int vida;
 	private String imagen;
 	
+	//Una carta esta en N mazos, un mazo tiene N cartas
+	@ManyToMany
+	private List<Mazos> mazo;
 	//constructor
 	public Cartas() {}
 	

@@ -40,4 +40,14 @@ public class UserController {
 		}
 	}
 	
+	@GetMapping("/register")
+	public String registerUser(Model model,User usu,HttpSession user) {
+		userL = usu;
+		repository.save(userL);
+		model.addAttribute("sinsesion",true);
+		model.addAttribute("sesion",false);
+		return "index";
+		
+	}
+	
 }

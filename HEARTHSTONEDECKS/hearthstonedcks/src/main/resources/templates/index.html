@@ -16,11 +16,16 @@
 						
 						<input type="text" placeholder="busqueda" name="busqueda"> 
 						<input type="submit" value="Buscar"> 
-						
+							{{#sinsesion}}
 							<a href="login.html"><button style="color:black;">Login </button></a> 
 							<a href="#">|</a>
 							<a href="registrarse.html"> <button style="color:black;">Register</button></a>
-						
+							{{/sinsesion}}
+							{{#sesion}}
+							<a>{{nick}}</a>
+							<a href="#">|</a>
+							<a href=""> <button style="color:black;">Cerrar Sesion</button></a>
+							{{/sesion}}
 					</div>
 				</aside>
 				</section>

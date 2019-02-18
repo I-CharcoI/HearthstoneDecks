@@ -27,6 +27,8 @@ public class User {
 	private String fechanac;
 	private String pais;
 	
+	@OneToMany
+	private List<Anuncios> anuncios;
 	public User() {
 		
 	}

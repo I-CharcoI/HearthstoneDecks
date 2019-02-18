@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 
 
 @Entity
@@ -21,8 +22,8 @@ public class Anuncios {
 	
 	private String fechaAnuncio;
 	//Un anuncio tiene un usuario,un usuario tiene N anuncios
-	//@ManyToOne
-	//private User usuario;
+	@ManyToOne
+	private User usuario;
 	
 public Anuncios() {
 		
