@@ -23,6 +23,13 @@ public class UserController {
 	@PostConstruct
 	public void init() {
 		this.userL = null;//no hay usuario logueado
+		User Aitor = new User("Aitor","Matilla","Casanova","aitor97_","amatillacasanova@gmail.com","pruebausuario1","01/04/1997","España");
+		repository.save(Aitor);
+		
+		User Luis = new User("Luis","Notengo","Apellidos","luisito_NTA","usuario@gmail.com","nosoyreal22","14/02/1988","Paraguay");
+		repository.save(Luis);
+		User Kojiro = new User("Kojiro","Hyuga","Narita","soyFictisio_","usuariofalso@gmail.com","nosabiaqueponerxd","09/11/2000","Japon");
+		repository.save(Kojiro);
 	}
 	
 	@PostMapping("/login")
