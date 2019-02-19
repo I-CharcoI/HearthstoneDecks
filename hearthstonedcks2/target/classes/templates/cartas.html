@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+		<title>HearthstoneDecks</title>
+		<link rel="stylesheet" href="estilo.css" type="text/css" />
+	</head>
+	<body>
+	<nav>
+			<section class="nav-container">
+				<aside class="logo"><a href = "indexx"><img src="HSDECKS.png" width="200" height="40" alt= "MyCompany Logo"/></a>
+				</aside>
+				<aside class="menu">
+					<div class="menu-content">
+						
+						<input type="text" placeholder="busqueda" name="busqueda"> 
+						<input type="submit" value="Buscar"> 
+						
+							<a href="login.html"><button style="color:black;">Login </button></a> 
+							<a href="#">|</a>
+							<a href="registrarse.html"> <button style="color:black;">Register</button></a>
+						
+					</div>
+				</aside>
+				</section>
+				<section>
+				<aside class="menu2">
+					<div class="menu2-content">
+						
+						<a href="mazo" target="_blank">Mazos</a>
+						<a href="carta" target="_blank">Cartas</a>
+						<a href="notici" target="_blank">Noticias</a>
+						<a href="anunci" target="_blank">Anuncios</a>
+						<a href="reglamento.html" target="_blank">Reglamento</a>
+						
+						
+					</div>
+				</aside>
+			</section>
+			
+			</nav>
+			
+			<section class="paginaCARTA">
+				<p>{{#carta}}<br><br><br>
+				<img src={{imagen}} align="left" width="200" height="200" />
+				<p> <h2>{{nombre}}</h2>		
+					<b>TipoCarta:</b> {{tipoCarta}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <b>Ataque:</b> {{ataque}}<br>
+				    <br><b>Clase:</b> {{clase}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <b>Efecto:</b> {{efecto}}<br>
+				    <br><b>Expansion:</b> {{expansion}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <b>Vida:</b> {{vida}}<br>
+				    <br><b>Rareza:</b> {{rareza}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <b>Coste:</b> {{coste}}<br>
+				</p>
+				<br><br><br><br><br>
+				<p>-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+				
+				{{/carta}}</p>
+			</section>
+	</body>
+</html>
