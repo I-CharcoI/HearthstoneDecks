@@ -33,6 +33,7 @@ public Anuncios() {
 		super();
 		this.titulo = titulo;
 		this.contenido= contenido;
+		
 		this.fechaAnuncio = fechaAnuncio;
 	}
 	

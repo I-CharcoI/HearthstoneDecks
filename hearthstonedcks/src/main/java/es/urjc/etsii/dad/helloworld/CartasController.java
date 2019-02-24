@@ -46,7 +46,7 @@ public class CartasController {
 		return "cartas";
 	}
 	 @GetMapping(value = "/cartas")
-	 public Collection<Cartas> anuncios() {
+	 public Collection<Cartas> cartas() {
 		 return repository.findAll();
     }
 
