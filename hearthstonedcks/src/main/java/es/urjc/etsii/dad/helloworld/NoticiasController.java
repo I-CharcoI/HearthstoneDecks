@@ -1,11 +1,17 @@
 package es.urjc.etsii.dad.helloworld;
 
+import java.util.Collection;
+import java.util.Map;
+
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class NoticiasController {
@@ -16,8 +22,8 @@ public class NoticiasController {
 	
 	@PostConstruct
 	public void init() {
-		repository.save(new Noticias("Noticia1", "este es el primera noticia que hago jajajaja", "Autor: Pepe"));
-		repository.save(new Noticias("Noticia2", "esta es la segunda noticia bla bla bla blablabla blabla blabla bla blabla blabla blabla blabla", "Autor: Antonio"));
+		repository.save(new Noticias("Noticia1", "este es el primera noticia que hago jajajaja", "4 de mayo"));
+		repository.save(new Noticias("Noticia2", "esta es la segunda noticia bla bla bla blablabla blabla blabla bla blabla blabla blabla blabla", "01/01/0001"));
 	}
 	
 	@RequestMapping("/notici")
@@ -27,7 +33,20 @@ public class NoticiasController {
 
 		return "noticias";
 	}
-	
+	 @GetMapping(value = "/noticia")
+	 public Collection<Noticias> noticias() {
+		 return repository.findAll();
+    }
+
+    @PostMapping(value = {"/noticia"})
+    public String nuevaNoticia(Model model,   @RequestParam Map<String, String> allRequestParams) {
+    	 String titulo = allRequestParams.get("titulo");
+         String contenido = allRequestParams.get("contenido");
+         String fechaNoticia = allRequestParams.get("fechaNoticia");
+    	repository.save(new Noticias(titulo,contenido,fechaNoticia));
+        
+    	return "redirect:/notici";
+    }
 	@RequestMapping("/indexx")
 	public String notindex(Model model) {
 
