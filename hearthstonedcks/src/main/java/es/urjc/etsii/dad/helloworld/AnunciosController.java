@@ -40,7 +40,7 @@ public class AnunciosController {
     }
 
     @PostMapping(value = {"/anuncio"})
-    public String nuevoAnuncio(Model model,   @RequestParam Map<String, String> allRequestParams) {
+    public String nuevoAnuncio( @RequestParam Map<String, String> allRequestParams) {
     	 String titulo = allRequestParams.get("titulo");
          String contenido = allRequestParams.get("contenido");
          String fechaAnuncio = allRequestParams.get("fechaAnuncio");

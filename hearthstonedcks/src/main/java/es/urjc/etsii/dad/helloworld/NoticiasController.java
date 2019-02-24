@@ -39,7 +39,7 @@ public class NoticiasController {
     }
 
     @PostMapping(value = {"/noticia"})
-    public String nuevaNoticia(Model model,   @RequestParam Map<String, String> allRequestParams) {
+    public String nuevaNoticia(@RequestParam Map<String, String> allRequestParams) {
     	 String titulo = allRequestParams.get("titulo");
          String contenido = allRequestParams.get("contenido");
          String fechaNoticia = allRequestParams.get("fechaNoticia");

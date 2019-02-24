@@ -1,11 +1,17 @@
 package es.urjc.etsii.dad.helloworld;
 
+import java.util.Collection;
+import java.util.Map;
+
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class CartasController {
@@ -16,8 +22,8 @@ public class CartasController {
 	@PostConstruct
 	public void init() {
 
-	repository.save(new Cartas("Abisario","Brujo","Basico",1,"Provocar","Basica","Esbirro",1,3,"\"C:\\Users\\Any\\Documents\\3º\\distribuidos\\HearthstoneDecks-master\\HearthstoneDecks-master\\hearthstonedcks\\src\\main\\java\\es\\urjc\\etsii\\dad\\helloworld\\abisario.jpg\""));
-	repository.save(new Cartas("Corrupcion","Brujo","Basico",1,"Elige a un esbirro enemigo.Al comienzo de tu turno, lo destruyes","Basica","Hechizo",0,0,"\"/ImagenesCartas/Brujo/corrupcion.jpg\""));
+	repository.save(new Cartas("Abisario","Brujo","Basico",1,"Provocar","Basica","Esbirro",1,3,"/ImagenesCartas/brujo/abisario.jpg"));
+	repository.save(new Cartas("Corrupcion","Brujo","Basico",1,"Elige a un esbirro enemigo.Al comienzo de tu turno, lo destruyes","Basica","Hechizo",0,0,"/ImagenesCartas/brujo/corrupcion.jpg"));
 	repository.save(new Cartas("Espiral mortal","Brujo","Basico",1,"Inflige 1 de daño a un esbirro.Si eso lo mata, roba una carta","Basica","Hechizo",0,0,"/ImagenesCartas/brujo/espiralMortal.jpg"));
 	repository.save(new Cartas("Fuego de alma","Brujo","Basico",1,"Inflinge 4 de daño.Descarta una carta aleatoria","Basica","Hechizo",0,0,"/ImagenesCartas/brujo/fuegoDeAlma.jpg"));
 	repository.save(new Cartas("Sacrificio pactado","Brujo","Basico",0,"Destruye a un demonio. Restaura 5 de salud a tu héroe","Basica","Hechizo",0,0,"/ImagenesCartas/brujo/sacrificioPactado.jpg"));
@@ -39,5 +45,27 @@ public class CartasController {
 
 		return "cartas";
 	}
+	 @GetMapping(value = "/cartas")
+	 public Collection<Cartas> anuncios() {
+		 return repository.findAll();
+    }
+
+    @PostMapping(value = {"/cartas"})
+    public String nuevaCarta(@RequestParam Map<String, String> allRequestParams) {
+    	 String nombre = allRequestParams.get("nombre");
+         String clase = allRequestParams.get("clase");
+         String expansion = allRequestParams.get("expansion");
+         Integer coste = Integer.parseInt(allRequestParams.get("coste"));
+         String efecto = allRequestParams.get("efecto");
+         String rareza = allRequestParams.get("rareza");
+         String tipoCarta = allRequestParams.get("tipoCarta");
+         Integer ataque = Integer.parseInt(allRequestParams.get("ataque"));
+         Integer vida = Integer.parseInt(allRequestParams.get("vida"));
+         String imagen = allRequestParams.get("imagen");
+         
+    	repository.save(new Cartas(nombre,clase,expansion,coste,efecto,rareza,tipoCarta,ataque,vida,imagen));
+        
+    	return "redirect:/carta";
+    }
 
 }
