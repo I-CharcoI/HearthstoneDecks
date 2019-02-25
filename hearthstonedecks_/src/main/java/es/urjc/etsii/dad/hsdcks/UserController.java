@@ -99,7 +99,7 @@ public class UserController {
 		}
 	}
 	
-	@PostMapping("/register")
+	@GetMapping("/register")
 	public String registerUser(Model model,User usu,HttpSession user) {
 		userL = usu;
 		repository.save(userL);
