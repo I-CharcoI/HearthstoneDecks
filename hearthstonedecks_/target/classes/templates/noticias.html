@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
-		<title>Anuncios</title>
+		<title>Noticias</title>
 		<link rel="stylesheet" href="css/estilo.css" type="text/css" />
 	</head>
 	<body>
@@ -41,27 +41,33 @@
 						</div>
 					</aside>
 					</section>
-				
-			<section class="pagina">
-			<div class="container-anun">
-			
-			<a href="publicar.html"><br><button style="color:black;">Publicar</button></a>
+				<section class="pagina">
+					<div class="container-anun">
+					
+					<a href="publicarN.html"><br><button style="color:black;">Publicar</button></a>
 					<section class="primary-content" role="main">
-									<ul class="listing listing-post post-listing">		
-							<p> 
-							
-							<div class="tituloANUNN">
-								<p>{{#anuncio}}
-								<h2>{{titulo}}<br></h2>
-								<p>{{contenido}}</p>
-									<br>{{fechaAnuncio}}
+									<ul class="listing listing-post post-listing">
+										
+							<div>
+								<p> 
+								
+								<div class="tituloNOTI">
+										<p>{{#noti}}
+									<h2>{{titulo}}<br></h2>
+									<p>{{contenido}}</p>
+									
+										<br>{{fecha}}
 									<p>_________________________________________________________________________________________________</p>
-								<p> </p><br><br>{{/anuncio}}
-							</div>			
+										<p> </p><br><br>{{/noti}}
+									</p>
+
+								</div>
+								</p>
+							</div>
 						</ul>
-					</section>				
+					</section>
 				</div>
 			</section>
-				</nav>
-			</body>
+		</nav>
+	</body>
 </html>

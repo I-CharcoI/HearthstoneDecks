@@ -1,5 +1,6 @@
 package es.urjc.etsii.dad.hsdcks;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -18,26 +19,31 @@ public class Mazos {
 	private long id;
 	
 	
-	private String creador;
+	
 	
 	private String nombre;
 	
 	private int votos;
-	
+	private String creador;
+	private String mazo1;
+	private String mazo2;
 	@ManyToMany(mappedBy="mazo")
 	private List<Cartas> cartas;
 	
 	@ManyToOne
 	private User usuario;
 	
-	
 	public Mazos() {}
 	
-	public Mazos(String nombre,String creador,int votos) {
+	public Mazos(String nombre,String creador,int votos,String mazo1,String mazo2) {
 		this.creador=creador;
 		this.nombre=nombre;
 		this.votos=votos;
+		this.mazo1=mazo1;
+		this.mazo2=mazo2;
 	}
+	
+
 	public String getCreador() {
 		return creador;
 	}

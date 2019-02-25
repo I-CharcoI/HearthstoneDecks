@@ -3,13 +3,13 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
-		<title>HearthstoneDecks</title>
+		<title>Cartas</title>
 		<link rel="stylesheet" href="css/estilo.css" type="text/css" />
 	</head>
 	<body>
 	<nav>
 			<section class="nav-container">
-				<aside class="logo"><a href = "index"><img src="imagenes/HSDECKS.png" width="200" height="40" alt= "MyCompany Logo"/></a>
+				<aside class="logo"><a href = "/"><img src="imagenes/HSDECKS.png" width="200" height="40" alt= "MyCompany Logo"/></a>
 				</aside>
 				<aside class="menu">
 					<div class="menu-content">
@@ -38,28 +38,31 @@
 						<a href="carta" target="_blank">Cartas</a>
 						<a href="notici" target="_blank">Noticias</a>
 						<a href="anunci" target="_blank">Anuncios</a>
-						<a href="reglamento" target="_blank">Reglamento</a>
+						<a href="reglas" target="_blank">Reglamento</a>
 						
 						
 					</div>
 				</aside>
 			</section>
-			
+			<section class="pagina">
+				<a href="nuevaCarta.html"><br><button style="color:black;">Nueva carta</button></a>
+				<br><br>
+					{{#carta}}
+					<div style="border-style:hidden; border-color:#D8D8D8;height:300px">
+					<img src="{{imagen}}" style="border-style:ridge; border-color:#D8D8D8; float:left; width:175px; height:240px">
+					 <h2>{{nombre}}</h2>		
+						&nbsp;<b> TipoCarta:</b> {{tipoCarta}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <b>Ataque:</b> {{ataque}}<br>
+					    <br>&nbsp;<b> Clase:</b> {{clase}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <b>Efecto:</b> {{efecto}}<br>
+					    <br>&nbsp;<b> Expansion:</b> {{expansion}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <b>Vida:</b> {{vida}}<br>
+					    <br>&nbsp;<b> Rareza:</b> {{rareza}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <b>Coste:</b> {{coste}}<br>
+					
+					<br><br><br>
+					</div>
+					<br>
+					{{/carta}}
+				
+			</section>
 			</nav>
 			
-			<section class="paginaCARTA">
-				<p>{{#carta}}<br><br><br>
-				<img src={{imagen}} align="left" width="200" height="200" />
-				<p> <h2>{{nombre}}</h2>		
-					<b>TipoCarta:</b> {{tipoCarta}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <b>Ataque:</b> {{ataque}}<br>
-				    <br><b>Clase:</b> {{clase}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <b>Efecto:</b> {{efecto}}<br>
-				    <br><b>Expansion:</b> {{expansion}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <b>Vida:</b> {{vida}}<br>
-				    <br><b>Rareza:</b> {{rareza}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <b>Coste:</b> {{coste}}<br>
-				</p>
-				<br><br><br><br><br>
-				<p>-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
-				
-				{{/carta}}</p>
-			</section>
 	</body>
 </html>

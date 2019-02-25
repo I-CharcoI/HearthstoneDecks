@@ -31,6 +31,7 @@ public class UserController {
 		repository.save(Luis);
 		User Kojiro = new User("Kojiro","Hyuga","Narita","soyFictisio_","usuariofalso@gmail.com","nosabiaqueponerxd","09/11/2000","Japon");
 		repository.save(Kojiro);
+		
 	}
 	
 	/**@PostMapping(value="/login")
@@ -99,7 +100,7 @@ public class UserController {
 		}
 	}
 	
-	@PostMapping("/register")
+	@GetMapping("/register")
 	public String registerUser(Model model,User usu,HttpSession user) {
 		userL = usu;
 		repository.save(userL);
