@@ -1,0 +1,72 @@
+@charset "ISO-8859-1";
+*{
+	box-sizing: border-box;
+}
+
+body{
+	margin: 0;
+	font-family: sans-serif,Arial;
+	background: #e6e6e6;
+	
+}
+
+h1{
+	color: #2d2b86;
+	text-align: center;
+}
+.form_register{
+	width: 98%;
+	max-width: 500px;
+	margin: auto;
+	background: white;
+}
+
+.form_titulo{
+	background: #465c93;
+	color:#e0cd06;
+	padding: 20px;
+	text-align: center;
+	font-weight: 100;
+	font-size: 30px;
+	border-bottom: 3px solid #e0cd06;
+}
+
+.contenedor-inputs{
+	padding: 10px 30px;
+	display: table;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+input{
+	width: 100%;
+	margin-bottom: 15px;
+	padding: 15px;
+}
+
+.btn_enviar{
+	background: #465c93;
+	color: #e0cd06;
+	margin: auto;
+	padding: 10px 40px;
+	counter: pointer;
+	font-size: 20px;
+}
+
+.btn-enviar: active{
+	transform: scale(1.05);
+}
+
+.form_link{
+	width: 100%;
+	margin: 7px;
+	text-align: center;
+	font-size: 14px;
+}
+
+.form_olvidado {
+	width: 100%;
+	margin: 7px;
+	text-align: center;
+	font-size: 14px;
+}
