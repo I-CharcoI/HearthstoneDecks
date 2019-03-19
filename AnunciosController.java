@@ -1,11 +1,5 @@
 package es.urjc.etsii.dad.hsdcks;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.InetAddress;
-import java.net.Socket;
 import java.util.Collection;
 import java.util.Map;
 
@@ -25,14 +19,14 @@ public class AnunciosController {
  private User userL;
 	@Autowired
 	private AnunciosRepository repository;
-	
+/**	
 	@PostConstruct
 	public void init() {
 		this.userL = null;
 		repository.save(new Anuncios("Anuncio1", "este es el primer anuncio que hago jajajaja", "20 de febrero"));
 		repository.save(new Anuncios("Anuncio2", "este es el segundo anuncio blablabla blabla blabla blabla bla blabla blabla blabla ", "2 de mayo"));
 	}
-
+**/
 	@RequestMapping("/anunci")
 	public String anuncio(Model model,HttpSession session) {
 		if(userL ==null) {
@@ -58,31 +52,11 @@ public class AnunciosController {
 
     @PostMapping(value = {"/anuncio"})
     public String nuevoAnuncio( @RequestParam Map<String, String> allRequestParams) {
-    	 String titulo = allRequestParams.get("titulo");
+    	
+    	String titulo = allRequestParams.get("titulo");
          String contenido = allRequestParams.get("contenido");
          String fechaAnuncio = allRequestParams.get("fechaAnuncio");
     	repository.save(new Anuncios(titulo,contenido,fechaAnuncio));
-    	
-    	int numeroPuerto = 5555;
-		String email = "anahj97@gmail.com";
-		
-		try {
-			Socket socket = new Socket(InetAddress.getLocalHost(),numeroPuerto);
-			BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			
-			PrintWriter pw = new PrintWriter(socket.getOutputStream(),true);
-			
-			pw.println(email);
-			
-			br.close();
-			pw.close();
-			socket.close();
-			
-		
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
         
     	return "redirect:/anunci";
     }
@@ -92,6 +66,4 @@ public class AnunciosController {
 				()-> new EntityNotFound("id no encontrado" +id));
 	}
 */
-    
-   
 }
