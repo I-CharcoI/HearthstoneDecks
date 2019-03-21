@@ -123,4 +123,4 @@ Los usuarios con el rol de USER solo pueden crear mazos y anuncios, mientras que
 
 ## Diagrama de Clases
 A continuación, se muestra el diagrama de clases actualizado para esta fase:
-![Diagrama de clases](/Imagenes_README/diaframa de clases.png)
+![Diagrama de clases](/Imagenes_README/diaframadeclases.png)
