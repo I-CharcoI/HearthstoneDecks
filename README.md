@@ -105,3 +105,6 @@ En el siguiente diagrama se muestra un modelo de datos donde se muestran las ent
 En el siguiente diagrama UML se muestra los distintos atributos de las entidades y como están relacionados entre sí.
 
 ![UML](/Imagenes_README/UMLHSD.png)
+
+
+#FASE  3
