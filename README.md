@@ -107,4 +107,8 @@ En el siguiente diagrama UML se muestra los distintos atributos de las entidades
 ![UML](/Imagenes_README/UMLHSD.png)
 
 
-#FASE  3
+# FASE 3
+
+## Diagrama de Navegación 
+A continuación, se muestra el diagrama de navegación donde podemos visualizar la accesibilidad entre las distintas páginas:
+
