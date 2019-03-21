@@ -120,6 +120,40 @@ index,cartas,mazos,registro/login,reglamento,anuncios,noticias y cerrar sesion. 
 Como paginas privadas tenemos los formularios de creación de cartas,creacion de anuncios y creacion de noticias. Aqui se distingue dos roles: USER Y ADMIN.
 
 Los usuarios con el rol de USER solo pueden crear mazos y anuncios, mientras que los administradores pueden acceder a estas paginas y,de forma exclusiva, a los formularios de creacion de noticias y cartas.
+## Inicio
+Esta es la pagina de inicio donde nos muestra dos botones que son los de logeo y de registro:
+![index](/Imagenes_README/index.png)
+## Formulario de registro
+Cuando accedemos al boton de register nos aparece el siguiente formulario donde debemos introducir Nombre,Apellidos,nick, correo,contraseña, fecha de nacimiento y pais. 
+![formulario de registro](/Imagenes_README/register.png)
+## Formulario de logeo
+Cuando se da al formulario de logeo nos aparece dos cuadros de texto donde se introducen el nick y el usuario:
+![login](/Imagenes_README/login.png)
+En el caso que no se introduzca correctamente el usuario y la contraseña dara error redireccionando nuevamente al login:
+![error](/Imagenes_README/error.png)
+## Noticias
+Al estar logeado como administrador sale el siguiente boton para publicar las noticias:
+![notocia](/Imagenes_README/noticia.png)
+Al clicar el boton de publicar aparece el siguiente formulario a rellenar:
+![formulario](/Imagenes_README/formnoti.png)
+Nos redireccionaria nuevamente a noticias.
+## Cartas 
+Tiene el mismo comportamiento que noticias, si estas logeado como admin saldra el siguiente boton y al pulsarlo el siguiente formulario:
+![cartas](/Imagenes_README/cartas.png)
+![formcarta](/Imagenes_README/formcartas.png)
+## Mazos
+Si se esta logeado como usuario saldra el boton de crear mazo con su respectivo formulario:
+![mazo](/Imagenes_README/mazo.png)
+![fmazo](/Imagenes_README/formmazo.png)
+## Anuncios
+Si se esta logeado como usuario saldra el siguiente boton de publicar y al pulsarlo sale el siguiente formulario:
+![anuncio](/Imagenes_README/anuncios.png)
+![fanuncio](/Imagenes_README/formanuncio.png)
+
+## Mensaje de deslogeo
+Cuando se pulsa a cerrar sesion en el index aparece la siguiente pagina que redirecciona al index cuando se deslogea:
+![deslog](/Imagenes_README/deslog.png)
+
 
 ## Diagrama de Clases
 A continuación, se muestra el diagrama de clases actualizado para esta fase:
