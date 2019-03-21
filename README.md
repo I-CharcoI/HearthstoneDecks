@@ -112,3 +112,6 @@ En el siguiente diagrama UML se muestra los distintos atributos de las entidades
 ## Diagrama de Navegación 
 A continuación, se muestra el diagrama de navegación donde podemos visualizar la accesibilidad entre las distintas páginas:
 ![Diagrama de navegacion](/Imagenes_README/MapNav2.0.png)
+Como podemos observar con el diagrama se pueden distinguir varias paginas publicas que son: index,cartas,mazos,registro/login,reglamento,anuncios,noticias y cerrar sesion. Además se obvia las paginas como login_correcto,login_incorrecto y deslogeo_correcto pero son publicas.
+Como paginas privadas tenemos los formularios de creación de cartas,creacion de anuncios y creacion de noticias. Aqui se distingue dos roles: USER Y ADMIN.
+Los usuarios con el rol de USER solo pueden crear mazos y anuncios, mientras que los administradores pueden acceder a estas paginas y,de forma exclusiva, a los formularios de creacion de noticias y cartas.
