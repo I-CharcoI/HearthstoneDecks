@@ -121,7 +121,7 @@ Como paginas privadas tenemos los formularios de creación de cartas,creacion de
 
 Los usuarios con el rol de USER solo pueden crear mazos y anuncios, mientras que los administradores pueden acceder a estas paginas y,de forma exclusiva, a los formularios de creacion de noticias y cartas.
 
-##Diagrama de Clases
+## Diagrama de Clases
 A continuación, se muestra el diagrama de clases actualizado para esta fase:
 ![Diagrama de clases](/Imagenes_README/diagrama de clases.png)
 
