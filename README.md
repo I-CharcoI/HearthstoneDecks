@@ -171,32 +171,51 @@ Para realizar el despliegue de la maquina virtual se necesita los siguientes sof
 6. Vagrant.
 
 En un primer lugar, generamos los .jar de la aplicacion y el servicio interno de la siguiente manera:
+                    
                     Click derecho en el proyecto>Run as...>Maven build...>Goals>clean package>Run
+
 Tras tener previamente instalado Vagrant y VirtualBox, iniciamos el cdm de Windows para poder generar la maquina virtual en una carpeta con el nombre "vagrant/spring":
+                    
                     cd C:\Users\Usuario\Desktop\vagrant\spring
+
 Dentro de esta carpeta ejecutamos el siguiente mandato para la instalacion de ubuntu:
+                    
                     vagrant init ubuntu/trusty64
+
 Seguidamente, dentro de la carpeta "spring" se encuentra el archivo Vagrantfile el cual hay que modificar las siguientes lineas y descomentarlas:
+                    
                     config.vm.network "private_network", ip: "192.168.33.10"
                     config.vm.network "forwarded_port", guest: 8443, host: 8443, host_ip: "127.0.0.1"
                     config.vm.network "forwarded_port", guest: 5555, host: 5555, host_ip: "127.0.0.1"
+
 Estas modificaciones se realizan para que la maquina ejecute en un puerto la aplicacion y en otro el servicio interno.
 Ya hecha esta modificacion, en el cmd ejecutamos los siguientes comandos:
+                     
                      vagrant up
                      vagrant ssh
 Con estos comandos se prepara la maquina y se la ejecuta.
+
 Instalamos dentro de la maquina virtual java:
+                     
                      sudo add-apt-repository ppa:webupd8team/java -y
                      sudo apt-get update
                      sudo apt-get install oracle-java8-installer
+
 Despues, se instala mysql:
+                     
                      sudo apt-get install mysql-server
                      sudo apt-get install mysql-workbench
+
 Tras meter la contraseña podemos crear una base de datos de la siguiente forma:
+                     
                      mysql -u root -p
                      CREATE DATABASE prueba;
+
 Ya realizados estos pasos, nos situamos en la carpeta vagrant que se encuentra dentro de la maquina:
+                     
                      cd /vagrant
+
 Desde aqui solo hace falta ejecutar los jar siguiendo la siguiente estructura de comando:
+                    
                     java -jar nombre_ejecutable.jar
               
