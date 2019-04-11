@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+		<title>Crear mazo</title>
+	<link rel="stylesheet" href="css/sRegister.css">
+	</head>
+	
+	<body>
+	<h1><br></h1>
+		<form action="/aniadircartas" method="post" class="form_register">
+		<h2 class="form_titulo">CREA UN MAZO</h2>	
+		<div class="contenedor-inputs">
+		    <div>
+		        <input placeholder="Nombre" maxlength="30" type="text"  id="nombre" name="nombre" required>
+		    </div>
+		    <br>
+		     <div>
+		        
+		        <input placeholder="nick" maxlength="30" type="text" id="creador" name="creador" required>
+		    </div>
+		    <br>
+		   
+		    <div class="contenedor-inputs">
+				
+		        <select name="carta1" required >
+ 					{{#carta}}
+					<option value="{{nombre}}">{{nombre}}</option>
+					{{/carta}}
+					</select>
+				
+		    </div>
+		    <div class="contenedor-inputs">
+				
+		        <select name="carta2" required >
+ 					{{#carta}}
+					<option value="{{nombre}}">{{nombre}}</option>
+					{{/carta}}
+					</select>
+				
+		    </div>
+		    <div class="contenedor-inputs">
+				
+		        <select name="carta3" required >
+ 					{{#carta}}
+					<option value="{{nombre}}">{{nombre}}</option>
+					{{/carta}}
+					</select>
+				
+		    </div>
+		    <div class="contenedor-inputs">
+				
+		        <select name="carta4" required >
+ 					{{#carta}}
+					<option value="{{nombre}}">{{nombre}}</option>
+					{{/carta}}
+					</select>
+				
+		    </div>
+		    <div class="contenedor-inputs">
+				
+		        <select name="carta5" required >
+ 					{{#carta}}
+					<option value="{{nombre}}">{{nombre}}</option>
+					{{/carta}}
+					</select>
+			
+		    </div>
+		     <div class="contenedor-inputs">
+				
+		        <select name="carta6" required >
+ 					{{#carta}}
+					<option value="{{nombre}}">{{nombre}}</option>
+					{{/carta}}
+					</select>
+				
+		    </div>
+		     <div class="contenedor-inputs">
+				
+		        <select name="carta7" required >
+ 					{{#carta}}
+					<option value="{{nombre}}">{{nombre}}</option>
+					{{/carta}}
+					</select>
+				
+		    </div>
+		     <div class="contenedor-inputs">
+				
+		        <select name="carta8" required >
+ 					{{#carta}}
+					<option value="{{nombre}}">{{nombre}}</option>
+					{{/carta}}
+					</select>
+				
+		    </div>
+		     <div class="contenedor-inputs">
+				
+		        <select name="carta9" required >
+ 					{{#carta}}
+					<option value="{{nombre}}">{{nombre}}</option>
+					{{/carta}}
+					</select>
+				
+		    </div>
+		     <div class="contenedor-inputs">
+				
+		        <select name="carta10" required >
+ 					{{#carta}}
+					<option value="{{nombre}}">{{nombre}}</option>
+					{{/carta}}
+					</select>
+				
+		    </div>
+		    <input   type="hidden" id="votos" name="votos" value="0"/>
+		   	<input type="hidden" name="_csrf" value="{{token}}"/>
+		    <input type="submit" value="Siguiente" required class="btn_enviar">
+		       
+		    </div>
+		</form>
+	</body>
+</html>
