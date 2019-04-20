@@ -12,10 +12,10 @@
 		<div class="contenedor-inputs">
 			<input type="text" name="nick" placeholder="Nombre de usuario o Correo electronico" required>
 			<input type="password" name="contrasenia" placeholder="Contraseña" required>
+			<input type="hidden" name="_csrf" value="{{token}}"/>
 			<input type="submit" value="Acceder" required class="btn_enviar">
 			<p class="form_olvidado"><a href="">He olvidado mi contraseña</a></p>
-			<p class="form_link">¿No tienes cuenta?<a href="registrarse.html">Inicie sesión aquí</a></p>
-			{{{problema}}}
+			<p class="form_link">¿No tienes cuenta?<a href="/register">Inicie sesión aquí</a></p>
 		</div>
 	</form>
 </body>

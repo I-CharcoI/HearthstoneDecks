@@ -1,13 +1,19 @@
 package es.urjc.etsii.dad.hsdcks;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
 public class User {
@@ -27,6 +33,9 @@ public class User {
 	private String fechanac;
 	private String pais;
 	
+	@ElementCollection(fetch= FetchType.EAGER)
+	private List<String> roles;
+	
 	@OneToMany(mappedBy="autor")
 	private List<Anuncios> anuncios;
 	
@@ -37,16 +46,17 @@ public class User {
 		
 	}
 	
-	public User(String nombre,String apellido1,String apellido2,String nick,String correo,String contrasenia,String fechanac,String pais) {
+	public User(String nombre,String apellido1,String apellido2,String nick,String correo,String contrasenia,String fechanac,String pais,String... roles) {
 		
 		this.nombre = nombre;
 		this.apellido1 = apellido1;
 		this.apellido2 = apellido2;
 		this.nick = nick;
 		this.correo = correo;
-		this.contrasenia = contrasenia;
+		this.contrasenia = new BCryptPasswordEncoder().encode(contrasenia);
 		this.fechanac = fechanac;
 		this.pais = pais;
+		this.roles = new ArrayList<>(Arrays.asList(roles));
 	}
 	
 	public long getId() {
@@ -119,7 +129,12 @@ public class User {
 	public void setPais(String pais) {
 		this.pais = pais;
 	}
-	
+	public List<String> getRoles() {
+		return roles;
+	}
+	public void setRoles(String... roles) {
+		this.roles = Arrays.asList(roles);
+	}
 	public String toString() {
 		return "Usuario [id: "+idUser+" ,nombre: "+nombre+" ,primer apellido: "+apellido1+" , segundo apellido: "+apellido2+" ,nick: "+nick+" ,correo: "+correo+" ,contraseña: "+contrasenia+" ,fecha de nacimiento: "+fechanac+" ,pais: "+pais+" ]";
 	}

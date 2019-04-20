@@ -1,27 +1,44 @@
 package es.urjc.etsii.dad.hsdcks;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.RestTemplate;
 
 @Controller
 public class CartasController {
-	private User userL;
+	
 	@Autowired
 	private CartasRepository repository;
 	
+	@Autowired
+	private UserRepository URep;
+	
+	/**
 	@PostConstruct
 	public void init() {
-	
+	this.userL = null;
 	repository.save(new Cartas("Abisario","Brujo","Basico",1,"Provocar","Basica","Esbirro",1,3,"/imagenes/ImagenesCartas/Brujo/abisario.jpg"));
 	repository.save(new Cartas("Corrupcion","Brujo","Basico",1,"Elige a un esbirro enemigo.Al comienzo de tu turno, lo destruyes","Basica","Hechizo",0,0,"/imagenes/ImagenesCartas/Brujo/corrupcion.jpg"));
 	repository.save(new Cartas("Espiral mortal","Brujo","Basico",1,"Inflige 1 de daño a un esbirro.Si eso lo mata, roba una carta","Basica","Hechizo",0,0,"/imagenes/ImagenesCartas/brujo/espiralMortal.jpg"));
@@ -37,41 +54,46 @@ public class CartasController {
 
 
 	}
-
+**/
 	@RequestMapping("/carta")
-	public String anuncio(Model model,HttpSession session) {
-		
-		if(userL ==null) {
-			model.addAttribute("sinsesion",true);
-			model.addAttribute("sesion",false);
-			
+	public String anuncio(Model model,HttpServletRequest request,HttpSession session) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String currentPrincipalName = auth.getName();
+		session.setAttribute("nick",currentPrincipalName);
+		boolean sinsesion = true;
+		if(currentPrincipalName !="anonymousUser") {
+			sinsesion = false;
 		}
-		else {
-			model.addAttribute("sinsesion",false);
-			model.addAttribute("sesion", true);
-			model.addAttribute("nick",userL.getNick());
-			
-		}
+		model.addAttribute("sinsesion",sinsesion);
+		model.addAttribute("user",request.isUserInRole("USER"));
+		model.addAttribute("admin",request.isUserInRole("ADMIN"));
+		model.addAttribute("nick", currentPrincipalName);
+		CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
+		model.addAttribute("token", token.getToken());
 		model.addAttribute("carta", repository.findAll());
 
 		return "cartas";
 	}
 	
 	@RequestMapping("/crmazo")
-	public String crmazos(Model model,HttpSession session) {
-
+	public String crmazos(Model model,HttpServletRequest request,HttpSession session) {
+		CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
+		model.addAttribute("token", token.getToken());
 		model.addAttribute("carta", repository.findAll());
 
 		return "crearMazo";
 	}
 	
-	 @GetMapping(value = "/cartas")
-	 public Collection<Cartas> cartas() {
+	 @GetMapping("/nuevaCarta")
+	 public Collection<Cartas> cartas(Model model,HttpServletRequest request) {
+		 CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
+		
+		 model.addAttribute("token", token.getToken());
 		 return repository.findAll();
     }
 	
-	 @PostMapping(value = {"/cartas"})
-	    public String nuevaCarta(@RequestParam Map<String, String> allRequestParams,HttpSession session) {
+	 @PostMapping("/nuevaCarta")
+	    public String nuevaCarta(Model model,@RequestParam Map<String, String> allRequestParams,HttpSession session,HttpServletRequest request) {
 	    	 String nombre = allRequestParams.get("nombre");
 	         String clase = allRequestParams.get("clase");
 	         String expansion = allRequestParams.get("expansion");
@@ -82,9 +104,27 @@ public class CartasController {
 	         Integer ataque = Integer.parseInt(allRequestParams.get("ataque"));
 	         Integer vida = Integer.parseInt(allRequestParams.get("vida"));
 	         String imagen = allRequestParams.get("imagen");
-	         
+	        CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
+	 		model.addAttribute("token", token.getToken());
 	    	repository.save(new Cartas(nombre,clase,expansion,coste,efecto,rareza,tipoCarta,ataque,vida,imagen));
-	        
+	    	
+
+			String url = "http://localhost:8070/mail/";
+			List<User> usuarios = new ArrayList<User>();
+	    	usuarios=URep.findAll();
+	    	Iterator it = usuarios.iterator();
+	    	while (it.hasNext()) {
+
+	    		User usuario = (User) it.next();
+	    		String correo = usuario.getCorreo();
+	    		String nick = usuario.getNick();
+	    		Email nuevoEmail = new Email(nick, correo);
+	    		RestTemplate rest = new RestTemplate();
+	    		rest.postForEntity(url, nuevoEmail, String.class);
+	    		
+	    
+			}
+			
 	    	return "redirect:/carta";
 	    }
 

@@ -9,7 +9,7 @@
 	<body>
 		<nav>
 			<section class="nav-container">
-				<aside class="logo"><a href="notici"><img src="imagenes/HSDECKS.PNG" width="200" height="40" alt="MyCompanyLogo"></a>
+				<aside class="logo"><a href="/"><img src="imagenes/HSDECKS.PNG" width="200" height="40" alt="MyCompanyLogo"></a>
 				</aside>
 				<aside class="menu">
 					<div class="menu-content">
@@ -22,21 +22,17 @@
 							<a href="#">|</a>
 							<a href="registrarse.html"> <button style="color:black;">Register</button></a>
 							{{/sinsesion}}
-							{{#sesion}}
-							<a href=""> <button style="color:black;">Cerrar Sesion</button></a>
-							<a href="#">|</a>
-							<a>{{nick}}</a>
-							{{/sesion}}
+							
 					</div>
 				</aside>
 			</section>
 			<section>
 				<aside class="menu2">
 					<div class="menu2-content">
-						<a href="mazo" >Mazos</a>
-						<a href="carta" >Cartas</a>
-						<a href="notici" >Noticias</a>
-						<a href="anunci" >Anuncios</a>
+						<a href="mazo">Mazos</a>
+						<a href="carta">Cartas</a>
+						<a href="notici">Noticias</a>
+						<a href="anunci">Anuncios</a>
 						<a href="reglas">Reglamento</a>
 						</div>
 					</aside>
@@ -44,8 +40,9 @@
 				
 			<section class="pagina">
 			<div class="container-anun">
-			
-			<a href="publicar.html"><br><button style="color:black;">Publicar</button></a>
+			{{#user}}
+			<a href="/publicar"><br><button style="color:black;">Publicar</button></a>
+			{{/user}}
 					<section class="primary-content" role="main">
 									<ul class="listing listing-post post-listing">		
 							<p> 

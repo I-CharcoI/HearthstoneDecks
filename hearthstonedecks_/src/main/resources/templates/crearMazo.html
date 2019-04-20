@@ -113,8 +113,9 @@
 				
 		    </div>
 		    <input   type="hidden" id="votos" name="votos" value="0"/>
-		   
-		       <input type="submit" value="Siguiente" required class="btn_enviar">
+		   	<input type="hidden" name="_csrf" value="{{token}}"/>
+		    <input type="submit" value="Siguiente" required class="btn_enviar">
+		       
 		    </div>
 		</form>
 	</body>

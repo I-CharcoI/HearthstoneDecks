@@ -21,11 +21,16 @@
 							<a href="#">|</a>
 							<a href="registrarse.html"> <button style="color:black;">Register</button></a>
 							{{/sinsesion}}
-							{{#sesion}}
-							<a href="/deslogueo"> <button style="color:black;">Cerrar Sesion </button></a>
+							{{#user}}
+							<div>
+							<form action="/deslogueo" method="post" id="cerrarSesion">
+							<input type="hidden" name="_csrf" value="{{token}}"/>
+							</form>
+							<button type="submit" form="cerrarSesion" value="Submit" style="color:black;">Cerrar Sesion </button>
+							</div>
 							<a href="#">|</a>
-							<a> {{nick}}</a>
-							{{/sesion}}
+							<a>{{nick}}</a>
+							{{/user}}
 					</div>
 				</aside>
 				</section>
@@ -43,34 +48,49 @@
 					</div>
 				</aside>
 			</section>
-			<section class="pagina">
-					<div class="container-anun">
-					
-					
+			
+			<div class="container" >
 					<section class="primary-content" role="main">
 									<ul class="listing listing-post post-listing">
 										
-							<div>
-								<p> 
-								
-								<div class="tituloNOTI">
-										<p>{{#noti}}
-									<h2>{{titulo}}<br></h2>
-									<p>{{contenido}}</p>
-									
-										<br>{{fecha}}
-									<p>_________________________________________________________________________________________________</p>
-										<p> </p><br><br>{{/noti}}
-									</p>
-
-								</div>
-								</p>
-							</div>
-						</ul>
+													<div>
+														<p> 
+														
+														<div class="tituloNOT">
+															<p>{{#noindex}}
+															<h2>{{titulo}}<br></h2>
+															<p>{{contenido}}</p>
+															
+																<br>{{fecha}}
+															
+																<p> </p><br><br>{{/noindex}}
+															</p>
+														</div>
+														</p>
+													</div>
+									</ul>
 					</section>
-				</div>
-			</section>
+				
+			</div>
 			
+			
+			<div class="container-anuncios">
+				<section class="anun" role="main">
+					<u1 class="listing">
+								<div class="tituloANUN">
+									<h2>Anuncios</h2>
+									<p>{{#anunindex}}
+										<h3>{{titulo}}<br></h3>
+										<p>{{contenido}}</p>
+															
+										<br>{{fechaAnuncio}}
+															
+										<p> </p><br><br>{{/anunindex}}
+										</p>
+								</div>
+					</u1>
+				</section>
+			</div>
 	</nav>
 	</body>
 </html>

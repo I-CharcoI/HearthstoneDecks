@@ -9,7 +9,7 @@
 	<body>
 	<nav>
 			<section class="nav-container">
-				<aside class="logo"><a href = "notici"><img src="imagenes/HSDECKS.png" width="200" height="40" alt= "MyCompany Logo"/></a>
+				<aside class="logo"><a href = "/"><img src="imagenes/HSDECKS.png" width="200" height="40" alt= "MyCompany Logo"/></a>
 				</aside>
 				<aside class="menu">
 					<div class="menu-content">
@@ -22,7 +22,10 @@
 							<a href="registrarse.html"> <button style="color:black;">Register</button></a>
 							{{/sinsesion}}
 							{{#sesion}}
-							<a href="/deslogueo"> <button style="color:black;">Cerrar Sesion </button></a>
+							<form action="/deslogueo" method="post">
+							<button style="color:black;">Cerrar Sesion </button>
+							<input type="hidden" name="_csrf" value="{{token}}"/>
+							</form>
 							<a href="#">|</a>
 							<a> {{nick}}</a>
 							{{/sesion}}
@@ -34,11 +37,11 @@
 				<aside class="menu2">
 					<div class="menu2-content">
 						
-						<a href="mazo" >Mazos</a>
-						<a href="carta" >Cartas</a>
-						<a href="notici" >Noticias</a>
+						<a href="mazo">Mazos</a>
+						<a href="carta">Cartas</a>
+						<a href="notici">Noticias</a>
 						<a href="anunci">Anuncios</a>
-						<a href="reglas" >Reglamento</a>
+						<a href="reglas">Reglamento</a>
 	
 					</div>
 				</aside>
@@ -46,7 +49,9 @@
 		
 			<section class = "pagina">
 				<br>
+			{{#user}}
 			<a href="crmazo"> <button style="color:black;">Crear Mazo</button></a>
+			{{/user}}
 				<br>
 			
 				<p>{{#mazoss}}

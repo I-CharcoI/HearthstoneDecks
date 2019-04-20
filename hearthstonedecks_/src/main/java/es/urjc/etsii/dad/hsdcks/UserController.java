@@ -1,6 +1,10 @@
 package es.urjc.etsii.dad.hsdcks;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,17 +12,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 @Controller
 public class UserController {
 
 	//variable que nos indicara que el usuario esta logeado
-	private User userL;
+	//private User userL;
 	@Autowired 
 	private UserRepository repository;
 	
 	
+	/**
 	@PostConstruct
 	public void init() {
 		this.userL = null;//no hay usuario logueado
@@ -31,7 +39,7 @@ public class UserController {
 		repository.save(Kojiro);
 		
 	}
-	
+	**/
 	/**@PostMapping(value="/login")
 	public String initSesion(Model model,HttpSession user) {
 		if(this.userL==null) {
@@ -84,68 +92,69 @@ public class UserController {
 	}
 	**/
 	@RequestMapping("/")
-	public String inicioPag(Model model,HttpSession session) {
-		if(userL ==null) {
-			model.addAttribute("sinsesion",true);
-			model.addAttribute("sesion",false);
-			return "noticias";
+	public String inicioPag(Model model,HttpServletRequest request,HttpSession session) {
+		//recuperamos la autenticacion del usurio
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String currentPrincipalName = auth.getName();
+		session.setAttribute("nick",currentPrincipalName);
+		boolean sinsesion = true;
+		if(currentPrincipalName !="anonymousUser") {
+			sinsesion = false;
 		}
-		else {
-			model.addAttribute("sinsesion",false);
-			model.addAttribute("sesion", true);
-			model.addAttribute("nick",userL.getNick());
-			return "noticias";
-		}
+		model.addAttribute("sinsesion",sinsesion);
+		model.addAttribute("user",request.isUserInRole("USER"));
+		model.addAttribute("nick", currentPrincipalName);
+		CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
+		model.addAttribute("token", token.getToken());
+		return "index";
+		
+		
 	}
 	
 	@GetMapping("/register")
-	public String registerUser(Model model,User usu,HttpSession user) {
-		userL = usu;
-		repository.save(userL);
-		model.addAttribute("sinsesion",true);
-		model.addAttribute("sesion",false);
-		return "noticias";
+	public String registerUser(Model model,User user,HttpSession session,HttpServletRequest request) {
+		CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
+		model.addAttribute("token", token.getToken());
+		user.setContrasenia(new BCryptPasswordEncoder().encode(user.getContrasenia()));
+		user.setRoles("ROLE_USER");
+		repository.save(user);
+		return "index";
 		
 	}
 	
 	
 	@GetMapping("/login")
-	public String inicioSesion(Model model, HttpSession session) {
-		if(userL==null) {
-			model.addAttribute("problema", " ");
-			return "login";
-		}
-		else {
-			model.addAttribute("nick",userL.getNick());
-			return "login_correcto";
-		}
+	public String inicioSesion(Model model, HttpSession session,HttpServletRequest request) {
+		session.getAttribute("nick");
+		User userB = repository.findByNick((String) session.getAttribute("nick"));
+		model.addAttribute("nick", userB);
+		CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
+		model.addAttribute("token", token.getToken());
+		return "login";
 	}
 	
 	@PostMapping("/logearse")
-	public String logearse(Model model,HttpSession session, User usuario) {
-		User usIntenta = this.repository.findByNickAndContrasenia(usuario.getNick(),usuario.getContrasenia());
-		if(usIntenta == null) {
-			model.addAttribute("problema","Error,el usuario no existe");
-			return "login";
-		}
-		else {
-			this.userL = usIntenta;
-			model.addAttribute("nick",userL.getNick());
+	public String logearse(Model model,HttpSession session) {
 			return "login_correcto";
-		}
+		
 	}
 	@GetMapping("/deslogueo")
 	public String cerrarS(Model model,HttpSession session) {
-		if(userL != null) {
-			userL= null;
-			model.addAttribute("sinsesion",true);
-			model.addAttribute("sesion",false);
-			return "noticias";
-			
-		}
-		userL= null;
-		model.addAttribute("sinsesion",true);
-		model.addAttribute("sesion",false);
-		return "noticias";
+		return "deslogeo_correcto";
+	}
+	
+	@GetMapping("/login_correcto")
+	public String loginCorrecto() {
+		return "login_correcto";
+	}
+	
+	@GetMapping("/login_incorrecto")
+	public String loginIncorrecto() {
+		return "login_incorrecto";
+	}
+	
+	@GetMapping("/deslogeo_correcto")
+	public String deslogeoCorrecto() {
+		return "deslogeo_correcto";
 	}
 }
