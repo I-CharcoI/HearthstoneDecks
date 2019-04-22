@@ -50,9 +50,6 @@ public class CartasController {
 	repository.save(new Cartas("Terror del vacio","Brujo","Clasico",3,"Grito de batalla: Destruye a los esbirros adyacentes y obtiene su ataque y salud","Poco común","Esbirro",3,3,"/imagenes/ImagenesCartas/brujo/terrorDelVacio.jpg"));
 	repository.save(new Cartas("Vacío abisal","Brujo","Clasico",8,"Destruye a todos los esbirros","Épica","Hechizo",0,0,"/imagenes/ImagenesCartas/brujo/vacioAbisal.jpg"));
 	repository.save(new Cartas("Lord Jaraxxus","Brujo","Clasico",9,"Grito de batalla: Destruye a tu héroe y lo reemplaza con Lord Jaraxxus","Legendaria","Esbirro",3,15,"/imagenes/ImagenesCartas/brujo/lordJaraxxus.jpg"));
-
-
-
 	}
 **/
 	@RequestMapping("/carta")

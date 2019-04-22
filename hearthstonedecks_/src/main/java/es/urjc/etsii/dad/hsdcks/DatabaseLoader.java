@@ -24,10 +24,6 @@ public class DatabaseLoader {
 		//Carga de usuarios
 		User userAitor= new User("Aitor","Matilla","Casanova","aitor97","amatillacasanova@gmail.com","admin1","01/04/1997","España","ROLE_USER","ROLE_ADMIN");
 		userRep.save(userAitor);
-		User userNacho= new User("Nacho","Matilla","Casanova","Nacho","nachocharco@gmail.com","admin1","01/04/1997","España","ROLE_USER","ROLE_ADMIN");
-		userRep.save(userNacho);
-		User userAna= new User("Ana","Matilla","Casanova","Ana","anahj97@gmail.com","admin1","01/04/1997","España","ROLE_USER","ROLE_ADMIN");
-		userRep.save(userNacho);
 		
 		//Cargar Cartas
 		cartasRep.save(new Cartas("Abisario","Brujo","Basico",1,"Provocar","Basica","Esbirro",1,3,"/imagenes/ImagenesCartas/Brujo/abisario.jpg"));

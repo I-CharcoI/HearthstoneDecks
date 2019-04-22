@@ -72,4 +72,62 @@ public Anuncios() {
 	public String toString() {
 		return "   "+getTitulo()+"   "+getFechaAnuncio()+"  "+getContenido();
 	}
+	
+	@Override
+	public int hashCode() {
+		final int primo = 31;
+		int result = 1;
+		
+		result = primo * result +(int) (id_anuncio ^(id_anuncio >>> 32));
+		result = primo * result +((titulo == null) ? 0: titulo.hashCode());
+		result = primo * result +((contenido == null) ? 0: contenido.hashCode());
+		result = primo * result +((fechaAnuncio == null) ? 0: fechaAnuncio.hashCode());
+		result = primo * result +((autor == null) ? 0: autor.hashCode());
+		
+		return result;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		
+		Anuncios otro = (Anuncios) obj;
+		if(id_anuncio != otro.id_anuncio) {
+			return false;
+		}
+		if(titulo == null) {
+			if(otro.titulo == null) {
+				return false;
+			}
+		}else if (!titulo.equals(otro.titulo)) {
+			return false;
+		}
+		if(contenido == null) {
+			if(otro.contenido == null) {
+				return false;
+			}
+		}else if (!contenido.equals(otro.contenido)) {
+			return false;
+		}
+		if(fechaAnuncio == null) {
+			if(otro.fechaAnuncio == null) {
+				return false;
+			}
+		}else if (!fechaAnuncio.equals(otro.fechaAnuncio)) {
+			return false;
+		}
+		if(autor == null) {
+			if(otro.autor == null) {
+				return false;
+			}
+		}else if (!autor.equals(otro.autor)) {
+			return false;
+		}
+		return true;
+	}
 }
