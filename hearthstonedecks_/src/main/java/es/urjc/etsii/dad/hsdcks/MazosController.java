@@ -22,6 +22,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.csrf.CsrfToken;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +34,8 @@ import org.springframework.web.client.RestTemplate;
 @Controller
 public class MazosController {
 
+	@Value(value="serviciointerno")
+	private String serviciointernourl;
 
 	@Autowired
 	private MazosRepository repository;
@@ -109,7 +112,7 @@ public class MazosController {
          
     	repository.save(new Mazos(nombre,creador,votos,mazo1,mazo2));
 
-		String url = "http://localhost:8070/mail/";
+		//String url = "http://localhost:8070/mail/";
 		List<User> usuarios = new ArrayList<User>();
     	usuarios=URep.findAll();
     	Iterator it = usuarios.iterator();
@@ -120,7 +123,7 @@ public class MazosController {
     		String nick = usuario.getNick();
     		Email nuevoEmail = new Email(nick, correo);
     		RestTemplate rest = new RestTemplate();
-    		rest.postForEntity(url, nuevoEmail, String.class);
+    		rest.postForEntity(serviciointernourl, nuevoEmail, String.class);
     		
     
 		}

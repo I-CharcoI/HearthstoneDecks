@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.csrf.CsrfToken;
@@ -30,6 +31,8 @@ import org.springframework.web.client.RestTemplate;
 
 @Controller
 public class AnunciosController {
+	@Value(value="serviciointerno")
+	private String serviciointernourl;
 
 	@Autowired
 	private AnunciosRepository repository;
@@ -80,7 +83,7 @@ public class AnunciosController {
 	         String fechaAnuncio = allRequestParams.get("fechaAnuncio");
 			repository.save(new Anuncios(titulo,contenido,fechaAnuncio));
 
-			String url = "http://localhost:8070/mail/";
+			//String url = "http://localhost:8070/mail/";
 			List<User> usuarios = new ArrayList<User>();
 	    	usuarios=URep.findAll();
 	    	Iterator it = usuarios.iterator();
@@ -91,7 +94,7 @@ public class AnunciosController {
 	    		String nick = usuario.getNick();
 	    		Email nuevoEmail = new Email(nick, correo);
 	    		RestTemplate rest = new RestTemplate();
-	    		rest.postForEntity(url, nuevoEmail, String.class);
+	    		rest.postForEntity(serviciointernourl, nuevoEmail, String.class);
 	    		
 	    
 			}
