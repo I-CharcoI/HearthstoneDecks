@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: es.urjc.etsii.dad.hsdcks.HearthstonedecksApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 14.594 s <<< FAILURE! - in es.urjc.etsii.dad.hsdcks.HearthstonedecksApplicationTests
+contextLoads(es.urjc.etsii.dad.hsdcks.HearthstonedecksApplicationTests)  Time elapsed: 0.004 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'databaseLoader': Invocation of init method failed; nested exception is org.springframework.dao.IncorrectResultSizeDataAccessException: query did not return a unique result: 3; nested exception is javax.persistence.NonUniqueResultException: query did not return a unique result: 3
+Caused by: org.springframework.dao.IncorrectResultSizeDataAccessException: query did not return a unique result: 3; nested exception is javax.persistence.NonUniqueResultException: query did not return a unique result: 3
+Caused by: javax.persistence.NonUniqueResultException: query did not return a unique result: 3
+

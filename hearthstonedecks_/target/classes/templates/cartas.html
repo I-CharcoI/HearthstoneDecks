@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="ISO-8859-1">
+		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
 		<title>Cartas</title>
 		<link rel="stylesheet" href="css/estilo.css" type="text/css" />
@@ -9,7 +9,7 @@
 	<body>
 	<nav>
 			<section class="nav-container">
-				<aside class="logo"><a href = "notici"><img src="imagenes/HSDECKS.png" width="200" height="40" alt= "MyCompany Logo"/></a>
+				<aside class="logo"><a href = "/"><img src="imagenes/HSDECKS.png" width="200" height="40" alt= "MyCompany Logo"/></a>
 				</aside>
 				<aside class="menu">
 					<div class="menu-content">
@@ -22,7 +22,11 @@
 							<a href="registrarse.html"> <button style="color:black;">Register</button></a>
 							{{/sinsesion}}
 							{{#sesion}}
-							<a href="index"> <button style="color:black;">Cerrar Sesion</button></a>
+							<form action="/deslogueo" method="post">
+							<input type="hidden" name="_csrf" value="{{token}}"/>
+							<button style="color:black;">Cerrar Sesion </button>
+							
+							</form>
 							<a href="#">|</a>
 							<a>{{nick}}</a>
 							{{/sesion}}
@@ -45,7 +49,9 @@
 				</aside>
 			</section>
 			<section class="pagina">
-				<a href="nuevaCarta.html"><br><button style="color:black;">Nueva carta</button></a>
+				{{#admin}}
+				<a href="/nuevaCarta"><br><button style="color:black;">Nueva carta</button></a>
+				{{/admin}}
 				<br><br>
 					{{#carta}}
 					<div style="border-style:hidden; border-color:#D8D8D8;height:300px">
