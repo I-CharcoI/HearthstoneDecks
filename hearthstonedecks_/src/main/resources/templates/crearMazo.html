@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="ISO-8859-1">
+		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
 		<title>Crear mazo</title>
 	<link rel="stylesheet" href="css/sRegister.css">
@@ -113,8 +113,9 @@
 				
 		    </div>
 		    <input   type="hidden" id="votos" name="votos" value="0"/>
-		   
-		       <input type="submit" value="Siguiente" required class="btn_enviar">
+		   	<input type="hidden" name="_csrf" value="{{token}}"/>
+		    <input type="submit" value="Siguiente" required class="btn_enviar">
+		       
 		    </div>
 		</form>
 	</body>
