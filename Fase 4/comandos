@@ -1,0 +1,51 @@
+CREAR NETWORK
+docker network create hearstone
+
+BORRAR IMAGENES
+docker rmi
+
+BORRAR CONTENEDORES
+docker rm
+
+1.ARRANCAR MYSQL
+	docker run --name mysql1 --network=heartstone -e MYSQL_ROOT_PASSWORD=pass1234 -e MYSQL_DATABASE=prueba -d mysql:5.6
+
+	PARA CONSULTAR 
+		docker exec -it mysql1 mysql -uroot -p
+		pass = pass1234
+		show databases;
+		use prueba;
+		show tables;
+		describe user;
+		SELECT*FROM user;
+
+
+
+2.CREAR IMAGEN BALANCEADOR
+	docker build -f DockerfileHaproxy -t balanceador .
+
+3.ARRANCAR CONTENEDOR BALANCEADOR
+	docker run -p 1936:1936 --name=balanHa --network=heartstone balanceador
+	docker run -p 1936:1936 -p 8445:443 --name=balanHa --network=heartstone balanceador -v "$PWD"/haproxy-tcp.cfg:/usr/local/etc/haproxy/haproxy.cfg 
+
+
+
+
+4.CREAR IMAGEN SERVICIOINTERNO
+	docker build -f DockerfileServicio -t ser .
+
+5.ARRANCAR SERVICIOINTERNO
+	docker run -p 8070:8070 --name=ser --network=heartstone  ser
+
+
+
+6.CREAR IMAGEN APLICACION
+	docker build -f DockerfileAplicacion -t web .
+
+7.ARRANCAR APLICACION(cambiar admin para cada web)
+	web1:
+	docker run -e "ADMIN=aitor97" -e "SERVICIOINTERNO=172.19.0.3" -e "SPRING_DATASOURCE_URL=jdbc:mysql://172.19.0.2/prueba?useUnicode=true&useJDBCCompliantTimeZoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC" -p 8443:8443 -w /usr/app --name=web1 --network=heartstone web java -jar "hearthstonedecks_-0.0.1-SNAPSHOT.jar" --spring.datasource.url="jdbc:mysql://172.19.0.2:3306/prueba?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"
+
+	web2:
+	docker run -e "ADMIN=pepe" -e "SERVICIOINTERNO=172.19.0.3" -e "SPRING_DATASOURCE_URL=jdbc:mysql://172.19.0.2/prueba?useUnicode=true&useJDBCCompliantTimeZoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC" -p 8444:8443 -w /usr/app --name=web2 --network=heartstone web java -jar "hearthstonedecks_-0.0.1-SNAPSHOT.jar" --spring.datasource.url="jdbc:mysql://172.19.0.2:3306/prueba?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"
+
