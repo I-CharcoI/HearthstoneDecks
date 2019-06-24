@@ -219,3 +219,5 @@ Desde aqui solo hace falta ejecutar los jar siguiendo la siguiente estructura de
                     
                     java -jar nombre_ejecutable.jar
               
+# Fase 4
+[![Vídeo tutorial](https://img.youtube.com/vi/P3FJT4PsR1w/0.jpg)](https://www.youtube.com/watch?v=P3FJT4PsR1w)
